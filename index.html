@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime.js PoC</title>
+  <!--Importamos la librería-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <!--Definimos el estilo inicial o estilo base de nuestra figura ".box" y del botón accionador-->
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #ff6b6b;
+      margin: 50px auto;
+      cursor: pointer;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+
+<!--Inicio del código-->>
+<body>
+  <!--Definimos nuestra figura-->
+  <div class="box"></div>
+  <!--Definimos el button y le adjuntamos la funcion toggleAnimation-->
+  <button onclick="toggleAnimation()">Animate</button>
+
+  <script>
+    let isAnimating = false;
+
+    // Configuración de animación
+    const animation = anime({
+      targets: '.box',
+      rotate: '360deg',
+      backgroundColor: '#4ecdc4',
+      scale: 1.5,
+      duration: 1000,
+      easing: 'easeInOutQuad',
+      autoplay: false,
+      direction: 'alternate',
+      loop: false
+    });
+
+    // Activación de la animación al hacer click
+    function toggleAnimation() {
+      if (!isAnimating) {
+        animation.play();
+        isAnimating = true;
+      } else {
+        animation.reverse();
+        isAnimating = false;
+      }
+    }
+
+  </script>
+</body>
+</html>
